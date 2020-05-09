@@ -2218,6 +2218,10 @@ rconfig   integer   track_loc_in    namelist,domains    1               0       
 # number of external model domains for coupling
 rconfig   integer   num_ext_model_couple_dom    namelist,domains   1     1      -    "number of external models domains for coupling, used for the coupling mask"   ""    ""
 
+# grid mpi rank to cell count check
+rconfig   logical rank_cell_check      namelist,domains     	1              .true. irh    "rank_cell_check"  "except if minimum decomposed computational patch size  x or y < 10 cells"  "flag"
+
+
 # TC (tropical cyclone bogusing)
 rconfig   logical insert_bogus_storm   namelist,tc     	1              .false. irh    "insert_bogus_storm"   "T/F for inserting a bogus typhoon"      "flag"
 rconfig   logical remove_storm         namelist,tc     	1              .false. irh    "remove_storm"  "T/F for only removing the original typhoon"  "flag"
@@ -2227,8 +2231,9 @@ rconfig   real    lonc_loc             namelist,tc     	max_bogus      -999.   i
 rconfig   real    vmax_meters_per_second   namelist,tc  max_bogus      -999.   irh    "vmax_meters_per_second"  "vmax of bogus storm in meters per second"  ""
 rconfig   real    rmax                 namelist,tc     	max_bogus      -999.   irh    "rmax"  "maximum radius outward from storm center"  ""
 rconfig   real    vmax_ratio           namelist,tc      max_bogus      -999.   irh    "vmax_ratio"  ""  ""
-rconfig   real    rankine_lid          namelist,tc      1              -999.   irh    "top pressure limit for the tc bogus scheme"
+rconfig   real    rankine_lid          namelist,tc      1              -999.   irh    "top pressure limit for the tc bogus sche0me"
 
+ 
 # Physics
 rconfig   character  physics_suite        namelist,physics      1           "none" rh "Physics suite selection" "physics suite to use for all domains: CONUS, tropical, or none" "character string"
 rconfig   logical  force_read_thompson   namelist,physics      1           .false.
